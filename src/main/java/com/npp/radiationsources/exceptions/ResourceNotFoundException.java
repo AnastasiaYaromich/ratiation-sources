@@ -1,4 +1,4 @@
-package ru.geekbrains.march.market.exceptions;
+package com.npp.radiationsources.exceptions;
 
 public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException(String message) {

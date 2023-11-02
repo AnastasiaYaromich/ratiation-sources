@@ -1,13 +1,20 @@
 package com.npp.radiationsources.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.List;
 
 @Entity
-@Table(name = "department_directions")
+@Table(name = "directions", schema = "radiation")
 @NoArgsConstructor
-public class DepartmentDirection {
+@AllArgsConstructor
+@Getter
+@Setter
+public class Direction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -16,8 +23,8 @@ public class DepartmentDirection {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "department_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_id", nullable = false)
     private Department department;
 
     @OneToMany(mappedBy = "direction")

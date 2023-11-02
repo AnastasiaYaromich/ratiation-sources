@@ -1,4 +1,4 @@
-package com.npp.ratiationsources;
+package com.npp.radiationsources;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.test.context.TestConfiguration;

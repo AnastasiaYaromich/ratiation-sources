@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html ng-app="market">
+<html ng-app="npp">
 
 <head>
     <meta charset="utf-8">
@@ -16,39 +16,34 @@
 
 <div class="container" ng-controller="indexController">
     <p></p>
-    <h1>March Market</h1>
+    <h1>NPP RADIATION SOURCES</h1>
     <p></p>
-    <h3>Список товаров</h3>
+    <h3>Список структурных подразделений</h3>
     <p></p>
     <table class="table table-hover">
         <thead>
         <tr>
             <td>ID</td>
             <td>Название</td>
-            <td>Цена</td>
             <td></td>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="p in products">
-            <td>{{p.id}}</td>
-            <td>{{p.title}}</td>
-            <td>{{p.price}}</td>
+        <tr ng-repeat="d in departments">
+            <td>{{d.id}}</td>
+            <td>{{d.name}}</td>
             <td>
-                <button class="btn btn-danger" ng-click="deleteProduct(p.id)">Удалить</button>
+                <button class="btn btn-danger" ng-click="deleteDepartment(d.id)">Удалить</button>
             </td>
         </tr>
         </tbody>
     </table>
     <p></p>
-    <h3>Добавить продукт</h3>
+    <h3>Добавить структурное подразделение</h3>
     <p></p>
-    <form class="row g-3" ng-submit="createNewProduct()">
+    <form class="row g-3" ng-submit="addDepartment()">
         <div class="col-auto">
-            <input type="text" class="form-control" id="newProductTitle" ng-model="newProduct.title" placeholder="Название">
-        </div>
-        <div class="col-auto">
-            <input type="number" class="form-control" id="newProductPrice" ng-model="newProduct.price" placeholder="Цена">
+            <input type="text" class="form-control" id="name" ng-model="newDepartment.name" placeholder="Название">
         </div>
         <div class="col-auto">
             <button type="submit" class="btn btn-primary mb-3">Создать</button>

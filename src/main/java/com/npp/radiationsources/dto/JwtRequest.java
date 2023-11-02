@@ -6,7 +6,7 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @Setter
-public class JwtRequestDto {
-    private String username;
+public class JwtRequest {
+    private String name;
     public String password;
 }

@@ -1,4 +1,4 @@
-package com.npp.ratiationsources;
+package com.npp.radiationsources;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

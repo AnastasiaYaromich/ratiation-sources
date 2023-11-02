@@ -1,27 +1,24 @@
-angular.module('market', []).controller('indexController', function ($scope, $http) {
+angular.module('npp', []).controller('indexController', function ($scope, $http) {
     $scope.fillTable = function () {
-        $http.get('http://localhost:8189/market/api/v1/products')
+        $http.get('http://localhost:8080/npp/departments')
             .then(function (response) {
-                $scope.products = response.data;
-                // console.log(response);
+                $scope.departments = response.data;
             });
     };
 
-    $scope.deleteProduct = function (id) {
-        $http.delete('http://localhost:8189/market/api/v1/products/' + id)
+    $scope.deleteDepartment = function (id) {
+        $http.delete('http://localhost:8080/npp/departments/' + id)
             .then(function (response) {
                 $scope.fillTable();
             });
     }
 
-    $scope.createNewProduct = function () {
-        // console.log($scope.newProduct);
-        $http.post('http://localhost:8189/market/api/v1/products', $scope.newProduct)
+    $scope.addDepartment = function () {
+        $http.post('http://localhost:8080/npp/departments', $scope.newDepartment)
             .then(function (response) {
-                $scope.newProduct = null;
+                $scope.newDepartment = null;
                 $scope.fillTable();
             });
     }
-
     $scope.fillTable();
 });
