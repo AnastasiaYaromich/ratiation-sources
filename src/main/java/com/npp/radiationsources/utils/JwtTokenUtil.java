@@ -4,8 +4,8 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.GrantedAuthority;
+//import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import java.util.Date;
 import java.util.HashMap;
@@ -20,24 +20,24 @@ public class JwtTokenUtil {
      @Value("${jwt.lifetime}")
      private Integer lifeTime;
 
-     public String generateToken(UserDetails userDetails) {
-         Map<String, Object> claims = new HashMap<>();
-         List<String> roles = userDetails.getAuthorities().stream()
-                 .map(GrantedAuthority::getAuthority)
-                 .collect(Collectors.toList());
-         claims.put("roles", roles);
-
-         Date issuedDate = new Date();
-         Date expiredDate = new Date(issuedDate.getTime() + lifeTime);
-
-         return Jwts.builder()
-                 .setClaims(claims)
-                 .setSubject(userDetails.getUsername())
-                 .setIssuedAt(issuedDate)
-                 .setExpiration(expiredDate)
-                 .signWith(SignatureAlgorithm.HS256, secret)
-                 .compact();
-     }
+//     public String generateToken(UserDetails userDetails) {
+//         Map<String, Object> claims = new HashMap<>();
+//         List<String> roles = userDetails.getAuthorities().stream()
+//                 .map(GrantedAuthority::getAuthority)
+//                 .collect(Collectors.toList());
+//         claims.put("roles", roles);
+//
+//         Date issuedDate = new Date();
+//         Date expiredDate = new Date(issuedDate.getTime() + lifeTime);
+//
+//         return Jwts.builder()
+//                 .setClaims(claims)
+//                 .setSubject(userDetails.getUsername())
+//                 .setIssuedAt(issuedDate)
+//                 .setExpiration(expiredDate)
+//                 .signWith(SignatureAlgorithm.HS256, secret)
+//                 .compact();
+//     }
 
      public String getUserNameFromToken(String token) {
          return getAllClaimsFromToken(token).getSubject();
