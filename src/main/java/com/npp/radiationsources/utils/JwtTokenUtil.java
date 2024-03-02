@@ -15,10 +15,10 @@ import java.util.stream.Collectors;
 
 @Component
 public class JwtTokenUtil {
-     @Value("${jwt.secret}")
-     private String secret;
-     @Value("${jwt.lifetime}")
-     private Integer lifeTime;
+//     @Value("${jwt.secret}")
+//     private String secret;
+//     @Value("${jwt.lifetime}")
+//     private Integer lifeTime;
 
 //     public String generateToken(UserDetails userDetails) {
 //         Map<String, Object> claims = new HashMap<>();
@@ -39,18 +39,18 @@ public class JwtTokenUtil {
 //                 .compact();
 //     }
 
-     public String getUserNameFromToken(String token) {
-         return getAllClaimsFromToken(token).getSubject();
-     }
-
-     public List<String> getRolesFromToken(String token) {
-         return getAllClaimsFromToken(token).get("roles", List.class);
-     }
-
-     private Claims getAllClaimsFromToken(String token) {
-         return Jwts.parser()
-                 .setSigningKey(secret)
-                 .parseClaimsJws(token)
-                 .getBody();
-     }
+//     public String getUserNameFromToken(String token) {
+//         return getAllClaimsFromToken(token).getSubject();
+//     }
+//
+//     public List<String> getRolesFromToken(String token) {
+//         return getAllClaimsFromToken(token).get("roles", List.class);
+//     }
+//
+//     private Claims getAllClaimsFromToken(String token) {
+//         return Jwts.parser()
+//                 .setSigningKey(secret)
+//                 .parseClaimsJws(token)
+//                 .getBody();
+//     }
 }

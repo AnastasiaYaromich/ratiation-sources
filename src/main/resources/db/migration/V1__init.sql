@@ -1,3 +1,5 @@
+CREATE SCHEMA radiation;
+
 CREATE TABLE radiation.departments (
     id BIGSERIAL PRIMARY KEY,
     name VARCHAR(255)
@@ -31,7 +33,7 @@ CREATE TABLE radiation.roles (
 );
 
 CREATE TABLE radiation.users_roles (
-     user_id BIGINT NOT NULL REFERENCES users(id),
-     role_id BIGINT NOT NULL REFERENCES roles (id),
+     user_id BIGINT NOT NULL REFERENCES radiation.users(id),
+     role_id BIGINT NOT NULL REFERENCES radiation.roles (id),
      primary key (user_id, role_id)
 );

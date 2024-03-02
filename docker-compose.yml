@@ -1,28 +1,12 @@
 version: '3.8'
-
 services:
-  api:
-    build: .
-    ports:
-      - '8081:8081'
-    container_name: radiationapi
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/radiationdb
-      - SPRING_DATASOURCE_USERNAME=radiation-user
-      - SPRING_DATASOURCE_PASSWORD=k9ZqLC
-    links:
-      - 'db:database'
   db:
-    image: postgres:15.2
-    restart: always
-    environment:
-      POSTGRES_USER: adiation-user
-      POSTGRES_PASSWORD: k9ZqLC
-      POSTGRES_DB: radiationdb
-    volumes:
-      - db-data:/var/lib/postgresql/data
     ports:
-      - 6432:5432
-volumes:
-  db-data:
-    driver: local
+      - '5432:5432'
+    image: postgres:15.2
+    environment:
+      POSTGRES_USER: developer
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: radiation
+      POSTGRES_URL: jdbc:postgresql://localhost:5432/radiation
+      POSTGRES_HOST_AUTH_METHOD: trust
